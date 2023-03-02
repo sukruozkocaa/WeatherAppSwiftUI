@@ -1,0 +1,44 @@
+{
+"coord": {
+"lon": 11.121,
+"lat": 27.0122
+},
+"weather": [
+{
+"id": 802,
+"main": "Clouds",
+"description": "scattered clouds",
+"icon": "03n"
+}
+],
+"base": "stations",
+"main": {
+"temp": 292.01,
+"feels_like": 290.4,
+"temp_min": 292.01,
+"temp_max": 292.01,
+"pressure": 1014,
+"humidity": 17,
+"sea_level": 1014,
+"grnd_level": 952
+},
+"visibility": 10000,
+"wind": {
+"speed": 2.1,
+"deg": 95,
+"gust": 2.16
+},
+"clouds": {
+"all": 40
+},
+"dt": 1677786250,
+"sys": {
+"country": "LY",
+"sunrise": 1677735552,
+"sunset": 1677777398
+},
+"timezone": 7200,
+"id": 2217350,
+"name": "Ghāt",
+"cod": 200
+}
