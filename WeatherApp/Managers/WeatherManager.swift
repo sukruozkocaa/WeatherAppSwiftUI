@@ -29,10 +29,15 @@ struct ResponseBody: Decodable {
     var main: MainResponse
     var name: String
     var wind: WindResponse
+    var sys: Sys
 
     struct CoordinatesResponse: Decodable {
         var lon: Double
         var lat: Double
+    }
+    
+    struct Sys: Decodable {
+        var country: String
     }
 
     struct WeatherResponse: Decodable {

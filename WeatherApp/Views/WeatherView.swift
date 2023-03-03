@@ -7,13 +7,19 @@
 
 import SwiftUI
 
+enum WeatherState: String {
+    case Clouds
+    case Rain
+    case Snow
+}
+
 struct WeatherView: View {
     var weather: ResponseBody
     var body: some View {
         ZStack(alignment: .leading) {
             VStack {
                 VStack(alignment: .leading, spacing: 5) {
-                    Text(weather.name)
+                    Text("\(weather.name),\(weather.sys.country)")
                         .bold().font(.title)
                     Text("Today, \(Date().formatted(.dateTime.month().day().hour().minute()))")
                         .fontWeight(.light)
@@ -24,10 +30,17 @@ struct WeatherView: View {
                 
                 VStack {
                     HStack {
-                        VStack(spacing: 20) {
-                            Image(systemName: "sun.max")
-                                .font(.system(size: 40))
+                        VStack(spacing: 10) {
+                            AsyncImage(url: URL(string: "https://openweathermap.org/img/wn/\(weather.weather[0].icon)@2x.png")) { image in
+                                 image
+                                    .resizable()
+                                    .aspectRatio(contentMode:.fit)
+                                    .frame(width: 60)
+                            } placeholder: {
+                                ProgressView()
+                            }
                             Text(weather.weather[0].main)
+                                .fontWeight(.bold)
                         }
                         .frame(width: 100,alignment: .leading)
                         Spacer()
@@ -87,6 +100,17 @@ struct WeatherView: View {
         .edgesIgnoringSafeArea(.bottom)
         .background(Color(hue: 0.656, saturation: 0.787, brightness: 0.354))
         .preferredColorScheme(.dark)
+    }
+    
+    func getHaterStatus(weather: WeatherState) -> String? {
+        switch weather {
+        case .Clouds:
+            return "cloud"
+        case .Rain:
+            return "cloud.rain"
+        case .Snow:
+            return "cloud.snow"
+        }
     }
 }
 
